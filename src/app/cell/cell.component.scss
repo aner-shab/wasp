@@ -1,0 +1,54 @@
+.hidden{
+    pointer-events: none;
+    opacity: 0;
+}
+.hex {
+    cursor: pointer;
+    float: left;
+    margin-right: -26px;
+    margin-bottom: -50px;
+}
+.hex .left {
+    float: left;
+    width: 0;
+    border-right: 30px solid goldenrod;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+.hex .middle {
+    float: left;
+    width: 60px;
+    height: 104px;
+    background: goldenrod;
+    span{
+        cursor: inherit;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 48px;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        line-height: 100px;
+        text-transform: uppercase;
+        vertical-align: text-top;
+    }
+}
+.hex .right {
+    float: left;
+    width: 0;
+    border-left: 30px solid goldenrod;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+.key-letter{
+    .right{
+        border-left: 30px solid gold;
+    }
+    .left{
+        border-right: 30px solid gold;
+    }
+    .middle{
+        background:gold;
+    }
+}
