@@ -99,15 +99,10 @@ export class AppComponent implements OnInit {
   }
 
   hasVowel(letters){
-    if (letters.includes('a')
-    || letters.includes('e')
-    || letters.includes('i')
-    || letters.includes('o')
-    || letters.includes('u')){
-      return true;
-    }
-    return false;
+    const regex = letters.match(/[aeiou]/gi);
+    return regex === null ? false : true;
   }
+
   async loadListOfWords(){
     console.log(this.lettersInRotation);
     let words = await this.http.get(
