@@ -7,6 +7,10 @@
     float: left;
     margin-right: -26px;
     margin-bottom: -50px;
+    transition: transform 0.1s ease-in-out;
+    &:hover{
+        transform: scale(0.9);
+    }
 }
 .hex .left {
     float: left;
