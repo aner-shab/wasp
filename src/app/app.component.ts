@@ -10,7 +10,7 @@ enum Guess {
 @Component({
   selector: 'app-root',
   template: `
-  <div class="beehive">
+  <div class="beehive" [ngClass]="{'loading': !loaded}">
     <div class="query animated" [ngClass]="{ 
       'shake': isGuess === 2, 'bounceOutUp': isGuess === 1}">{{currentQuery}} 
       <span class="blinking-cursor" [hidden]="isGuess !== 0">|</span>
@@ -70,7 +70,6 @@ export class AppComponent implements OnInit {
   wordsFound = [];
   currentQuery = '';
   loaded = false;
-
   isGuess: Guess = Guess.None;
 
   constructor(private http: HttpClient){
@@ -153,11 +152,15 @@ export class AppComponent implements OnInit {
   }
 
   onEnterClicked(){
-    if (this.wordsBank.find(word=> word === this.currentQuery)){
-      this.wordsFound.push(this.currentQuery);
-      this.isGuess = Guess.Correct;
+    if (this.wordsFound.find(word => word === this.currentQuery)){
+      // Word already found!
     }else{
-      this.isGuess = Guess.Wrong;
+      if (this.wordsBank.find(word=> word === this.currentQuery)){
+        this.wordsFound.push(this.currentQuery);
+        this.isGuess = Guess.Correct;
+      }else{
+        this.isGuess = Guess.Wrong;
+      }
     }
     setTimeout(()=> {
       this.isGuess = Guess.None;
