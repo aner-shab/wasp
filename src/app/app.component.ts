@@ -109,7 +109,8 @@ export class AppComponent implements OnInit {
     `https://api.yourdictionary.com/wordfinder/v1/unscrambler?dictionary=US%2CWWF&dictionary_opt=YDR&limit=0&tiles=${this.lettersInRotation}`)
     .toPromise();
     // TODO this is scrabble! we don't have double-letter support
-    this.wordsBank = (<any>words).data._items.map(x=> x.word).filter(x=> x.length > 3);
+    const keyLetter = this.lettersInRotation[2];
+    this.wordsBank = (<any>words).data._items.map(x=> x.word).filter(x=> x.length > 3).filter(word=> word.includes(keyLetter));
     console.log(this.wordsBank);
     if (this.wordsBank.length > 2){
       this.loaded = true;
